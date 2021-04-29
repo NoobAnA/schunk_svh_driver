@@ -78,7 +78,7 @@ SVHController::SVHController():
   m_current_settings(eSVH_DIMENSION),  // Vectors have to be filled with objects for correct deserialization
   m_position_settings(eSVH_DIMENSION),
   m_controller_feedback(eSVH_DIMENSION),
-  m_serial_interface(new SVHSerialInterface(boost::bind(&SVHController::receivedPacketCallback,this,_1,_2))),
+  m_serial_interface(new SVHSerialInterface(boost::bind(&SVHController::receivedPacketCallback,this,boost::placeholders::_1,boost::placeholders::_2))),
   m_enable_mask(0),
   m_received_package_count(0)
 {

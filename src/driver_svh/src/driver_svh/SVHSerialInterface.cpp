@@ -74,7 +74,7 @@ bool SVHSerialInterface::connect(const std::string &dev_name)
   }
 
   // create receive thread
-  m_receive_thread.reset(new SVHReceiveThread(TimeSpan(0, 500000), m_serial_device, boost::bind(&SVHSerialInterface::receivedPacketCallback,this,_1,_2)));
+  m_receive_thread.reset(new SVHReceiveThread(TimeSpan(0, 500000), m_serial_device, boost::bind(&SVHSerialInterface::receivedPacketCallback,this,boost::placeholders::_1,boost::placeholders::_2)));
 
   if (m_receive_thread)
   {
